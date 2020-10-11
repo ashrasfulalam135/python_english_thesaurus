@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  english-thesaurus-server-101:
+    build:
+        context: python-image/
+        dockerfile: Dockerfile
+    image: english-thesaurus
+    privileged: true
+    container_name: english-thesaurus-server-101
+    working_dir: '/root/'
+    tty: true
+    ports:
+      - 10000:80
+    hostname: english-thesaurus.local
+    volumes:
+      - ${DEV_HOME}/english_thesaurus:/root/english_thesaurus
+    environment:
+      - TZ=Asia/Tokyo
