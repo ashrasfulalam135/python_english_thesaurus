@@ -7,6 +7,10 @@ def translate(input_data):
     converted_input_data = input_data.casefold()
     if converted_input_data in data:
         return data[converted_input_data]
+    elif converted_input_data.title() in data:
+        return data[converted_input_data.title()]
+    elif converted_input_data.upper() in data:
+        return data[converted_input_data.upper()]
     elif len(get_close_matches(converted_input_data, data.keys(), cutoff=0.8)) > 0:
         yn = input("Did you mean %s instead? Press 'Y' if yes, or 'N' if no: " % get_close_matches(converted_input_data, data.keys(), cutoff=0.8)[0])
         if yn.casefold() == "y":
